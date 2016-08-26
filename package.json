@@ -1,0 +1,39 @@
+{
+    "name": "reserved_word_typing",
+    "version": "1.0.0",
+    "description": "",
+    "main": "gulpfile.js",
+    "dependencies": {
+        "del": "^2.2.2",
+        "gulp-sass": "^2.3.2"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^3.1.1",
+        "gulp-plumber": "^1.1.0",
+        "gulp-react": "^3.1.0",
+        "gulp-sass": "^2.3.2",
+        "gulp-slim": "^0.3.0",
+        "gulp-uglify": "^2.0.0",
+        "gulp-using": "^0.1.1",
+        "react-tools": "^0.13.3",
+        "browser-sync": "^2.14.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kodaitakahashi/reserved-word-typing.git"
+    },
+    "keywords": [
+        "sinatra",
+        "gulp"
+    ],
+    "author": "kodaitakahashi",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/kodaitakahashi/reserved-word-typing/issues"
+    },
+    "homepage": "https://github.com/kodaitakahashi/reserved-word-typing#readme"
+}
