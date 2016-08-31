@@ -12,4 +12,8 @@ class Main < Sinatra::Base
     slim :index
   end
 
+  get '/quesions/:id' do
+    ReservedWords.select(:id, :word, :description).where(program_id: params[:id]).to_json
+  end
+
 end
