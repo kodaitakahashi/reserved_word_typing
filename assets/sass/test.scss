@@ -1,8 +1,4 @@
-h1 {
-  color: #000;
-  transition: 200ms ease-out transform;
-  &:hover {
-    color: #fff;
-    transform: stanslate(10px, 0);
-  }
+.custom-restricted_width{
+  display: inline-block;
+  
 }
