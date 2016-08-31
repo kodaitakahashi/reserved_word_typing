@@ -13,7 +13,12 @@ class Main < Sinatra::Base
   end
 
   get '/quesions/:id' do
-    ReservedWords.select(:id, :word, :description).where(program_id: params[:id]).to_json
+    quesions = ReservedWords.select(:id, :word, :description).where(program_id: params[:id])
+    if quesions.empty?
+      status 400
+    else
+      quesions.to_json
+    end
   end
 
 end
