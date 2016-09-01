@@ -49,7 +49,7 @@ var Button = React.createClass({
                         </ul>
                     </div>
                 </div>
-                {this.state.pushed ? <TypingWindow programId={this.state.selectProgramId} /> : "" } 
+                {window}
             </div>
         );
     }
