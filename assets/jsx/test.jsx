@@ -64,7 +64,7 @@ var TypingWindow = React.createClass({
             quesions: []
         };
     },
-     componentWillMount: function() {
+    componentWillMount: function() {
         $.ajax({
             url: "/quesions/" + this.props.programId,
             dataType: 'json',
@@ -81,15 +81,32 @@ var TypingWindow = React.createClass({
             }.bind(this)
         });
     },
+    componentDidMount: function() {
+        window.addEventListener("keydown", this.keyDownHandling, false);
+    },
     changeHandling: function() {
         this.setState({
             gameStarted: true
-            });
-    },
-    changeText: function(event) {
-        this.setState({
-            textValue: event.target.value
         });
+    },
+    keyDownHandling: function(event){
+        event.preventDefault();
+        var keyDictionary = {
+            'Backspace': function(text){
+                return text.substr(0,text.length - 1);
+            }
+        };
+        var inputText = this.state.textValue;
+        if (event.key in keyDictionary){
+            inputText = keyDictionary[event.key](inputText);
+        }else if(event.keyCode >= 65 && event.keyCode <= 90)
+            inputText += event.key;
+        this.setState({
+            textValue: inputText
+        });
+    },
+    componentWillUnmount: function() {
+        window.removeEventListener("keydown", this.keyDownHandling, false);
     },
     render: function(){
         var node;
@@ -110,9 +127,9 @@ var TypingWindow = React.createClass({
                         </p>
                     </div>
                     <div className="game-input">
-                        <input onChange={this.changeText} type="text" value={this.state.textValue} />
+                        
                     </div>
-            </div>;
+                </div>;
         }else if(this.state.dataStated){
             game =  
                 <div className="game-start-button">
