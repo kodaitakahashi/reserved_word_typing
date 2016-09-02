@@ -12,4 +12,44 @@
   margin-right: 30px; }
 
 .square {
-  background: #c0ffee; }
+  background: #8BC34A; }
+
+.game-start-button {
+  position: relative;
+  width: 100px;
+  height: 30px;
+  top: 400px;
+  margin: 0 auto; }
+  .game-start-button button {
+    font-family: 'Ballo Paahi', cursive;
+    font-size: 20px; }
+
+.game-input {
+  position: relative;
+  width: 250px;
+  height: 30px;
+  top: 300px;
+  margin: 0 auto; }
+
+.game-input-disp {
+  position: relative;
+  width: 250px;
+  height: 30px;
+  top: 100px;
+  left: 350px; }
+  .game-input-disp p {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 3px; }
+
+.game-description {
+  position: relative;
+  height: 50px;
+  left: -30px; }
+  .game-description p {
+    font-family: 'Noto Sans Japanese', sans-serif;
+    font-size: 40px;
+    color: #fff;
+    text-align: center; }

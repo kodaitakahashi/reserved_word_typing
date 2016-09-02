@@ -59,6 +59,8 @@ var TypingWindow = React.createClass({
     getInitialState: function() {
         return{
             dataStated: false,
+            gameStarted: false,
+            textValue: '',
             quesions: []
         };
     },
@@ -79,23 +81,49 @@ var TypingWindow = React.createClass({
             }.bind(this)
         });
     },
+    changeHandling: function() {
+        this.setState({
+            gameStarted: true
+            });
+    },
+    changeText: function(event) {
+        this.setState({
+            textValue: event.target.value
+        });
+    },
     render: function(){
         var node;
-        if(this.state.dataStated){
-            node = this.state.quesions.map(function(data, i){
-                return(
-                    <div key={i} className="hoge">
-                        <p>{data.word}</p>
-                        <p>{data.description}</p>
+        if(!this.state.dataStated)
+            node = <p>データを準備中です...</p>;
+        else
+            node = '';
+        var game;
+        if(this.state.gameStarted){
+            game =
+                <div>
+                    <div className=" pure-u-1 game-description">
+                        <p>{this.state.quesions[0].description}</p>
                     </div>
-                );
-            });
-        }else
-        node = <p>データを準備中です...</p>;
+                    <div className="game-input-disp">
+                        <p> 
+                            {this.state.textValue}
+                        </p>
+                    </div>
+                    <div className="game-input">
+                        <input onChange={this.changeText} type="text" value={this.state.textValue} />
+                    </div>
+            </div>;
+        }else if(this.state.dataStated){
+            game =  
+                <div className="game-start-button">
+                    <button onClick={this.changeHandling} >Start</button>  
+                </div>;
+        }
         return(
             <div>
                 <div id="game-place" className="pure-u-1 square">
                     {node}
+                    {game}
                 </div>
             </div>
         );
