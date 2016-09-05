@@ -52,3 +52,4 @@ build-iPhoneSimulator/
 node_modules
 .ruby-version
 *.db
+seeds.rb
