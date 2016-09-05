@@ -61,7 +61,9 @@ var TypingWindow = React.createClass({
             dataStated: false,
             gameStarted: false,
             textValue: '',
-            quesions: []
+            quesions: [],
+            quesionCount: 0,
+            quesionIn: 0
         };
     },
     componentWillMount: function() {
@@ -72,6 +74,7 @@ var TypingWindow = React.createClass({
             success: function(data) {
                 this.setState({
                     quesions: data,
+                    quesionCount: Object.keys(data).length,
                     dataStated: true
                 });
                 console.log(this.state.quesions);
@@ -96,14 +99,25 @@ var TypingWindow = React.createClass({
                 return text.substr(0,text.length - 1);
             }
         };
+        
         var inputText = this.state.textValue;
-        if (event.key in keyDictionary){
+        if (event.key in keyDictionary)
             inputText = keyDictionary[event.key](inputText);
-        }else if(event.keyCode >= 65 && event.keyCode <= 90)
+        else if(event.keyCode >= 65 && event.keyCode <= 90)
             inputText += event.key;
         this.setState({
             textValue: inputText
         });
+        if(event.key == 'Enter')
+            this.checkAnswer();
+    },
+    checkAnswer: function() {
+        var textValue = this.state.textValue;
+        if (this.state.quesions[this.state.quesionIn].word == textValue){
+            this.setState({quesionIn: this.state.quesionIn + 1});
+            this.setState({textValue: ''});
+        }else
+        this.setState({textValue: ''});
     },
     componentWillUnmount: function() {
         window.removeEventListener("keydown", this.keyDownHandling, false);
@@ -119,7 +133,7 @@ var TypingWindow = React.createClass({
             game =
                 <div>
                     <div className=" pure-u-1 game-description">
-                        <p>{this.state.quesions[0].description}</p>
+                        <p>{this.state.quesions[this.state.quesionIn].description}</p>
                     </div>
                     <div className="game-input-disp">
                         <p> 
